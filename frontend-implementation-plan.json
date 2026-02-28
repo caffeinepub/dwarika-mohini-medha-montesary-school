@@ -1,0 +1,196 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Multilingual School Website for Dwarika Mohini Medha Montesary School",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement full-screen language selection modal on page load with English/Hindi options and persistent language toggle",
+      "acceptanceCriteria": [
+        "A language selector appears immediately on page load before any other content is shown",
+        "Two options are clearly presented: English and Hindi (हिंदी)",
+        "Selecting a language dismisses the modal and renders the full site in that language",
+        "All user-facing strings on the page change based on the selected language",
+        "A language toggle button remains visible in the header to switch languages at any time"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/contexts/LanguageContext.tsx",
+          "operation": "create",
+          "description": "Create a LanguageContext to manage the selected language state ('en' or 'hi') across the application. Provide a LanguageProvider component and useLanguage hook for accessing current language and toggle function. Store language preference in sessionStorage to persist for the session."
+        },
+        {
+          "path": "frontend/src/components/LanguageModal.tsx",
+          "operation": "create",
+          "description": "Create a full-screen modal component that displays on initial page load when no language is selected. Present two large, clearly labeled buttons for English and Hindi (हिंदी). On selection, save the choice to the LanguageContext and sessionStorage, then close the modal. Use shadcn/ui Dialog component for the modal structure."
+        },
+        {
+          "path": "frontend/src/components/LanguageToggle.tsx",
+          "operation": "create",
+          "description": "Create a compact language toggle button component for the header that displays the current language and allows switching between English and Hindi at any time. Show both language names or use flags/icons for clarity."
+        },
+        {
+          "path": "frontend/src/i18n/translations.ts",
+          "operation": "create",
+          "description": "Create a translations file exporting a typed object containing all user-facing strings in both English and Hindi. Organize by feature area (hero, classes, contact, navigation, etc.). Include school name, location, tagline, class descriptions, form labels, button text, and success messages in both languages."
+        },
+        {
+          "path": "frontend/src/hooks/useTranslation.ts",
+          "operation": "create",
+          "description": "Create a useTranslation hook that consumes the LanguageContext and returns a t() function to retrieve translated strings based on the current language. The hook should provide type-safe access to translations."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap the entire application with LanguageProvider. Conditionally render the LanguageModal when no language has been selected yet. Ensure the modal blocks all other content until a language is chosen."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Display prominent hero section with school name, location, and bilingual tagline",
+      "acceptanceCriteria": [
+        "School name 'Dwarika Mohini Medha Montesary School' is prominently displayed in the hero section",
+        "Location 'Shuklaganj, Unnao' is shown beneath or near the school name",
+        "The hero section adapts its text to the selected language"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Hero.tsx",
+          "operation": "create",
+          "description": "Create a Hero component displaying the school name 'Dwarika Mohini Medha Montesary School' in large, serif typography, with location 'Shuklaganj, Unnao' beneath it. Include a tagline or motto that uses the useTranslation hook to render in the selected language. Display the generated hero banner image frontend/public/assets/generated/hero-banner.dim_1200x400.png as a background or prominent visual element. Ensure the component is welcoming and uses the warm color palette (saffron, green, cream)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the Hero component at the top of the main page content, immediately after the header/navigation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create Classes section displaying all five classes (1-5) with bilingual descriptions",
+      "acceptanceCriteria": [
+        "All five classes (Class 1 through Class 5) are displayed as individual cards or sections",
+        "Each class entry includes the class name, a short description, and relevant info (subjects, age range)",
+        "Class descriptions display in the currently selected language (English or Hindi)",
+        "The section is clearly labeled and easy to navigate"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ClassCard.tsx",
+          "operation": "create",
+          "description": "Create a reusable ClassCard component that displays a single class with its number, age range, subjects, and description. Use rounded card styling with subtle shadows and the warm color palette. Accept props for class data and use useTranslation to render text in the selected language."
+        },
+        {
+          "path": "frontend/src/components/ClassesSection.tsx",
+          "operation": "create",
+          "description": "Create a ClassesSection component that renders a grid or list of five ClassCard components (Class 1 through Class 5). Include a section heading using useTranslation. Define class data (numbers, age ranges, subjects, descriptions) in both languages within the translations file and map over them to render ClassCard components."
+        },
+        {
+          "path": "frontend/src/i18n/translations.ts",
+          "operation": "modify",
+          "description": "Add translations for all five class descriptions, including class names, age ranges, curriculum focus, and subjects taught. Provide both English and Hindi versions for each class entry."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the ClassesSection component below the Hero component in the main page layout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement Contact Us form with validation, backend submission, and success confirmation",
+      "acceptanceCriteria": [
+        "Contact form includes fields: Full Name, Email, Phone Number, Subject, and Message",
+        "All fields have appropriate validation (required fields, email format, phone format)",
+        "Form labels and placeholder text render in the selected language",
+        "On successful submission, the inquiry is saved to the backend canister",
+        "A clear success message is shown to the user after submission",
+        "The form resets after a successful submission"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ContactForm.tsx",
+          "operation": "create",
+          "description": "Create a ContactForm component with fields for Full Name, Email, Phone Number, Subject (dropdown mapping to InquiryType enum), and Message. Use react-hook-form for form management and validation. Apply validation rules: all fields required, email format, phone number format. Use useTranslation for all labels, placeholders, and error messages. On submit, call the backend submitContactInquiry method with the form data and current timestamp. Show a success message on successful submission and reset the form. Handle errors gracefully with translated error messages. Use shadcn/ui Input, Select, Textarea, and Button components for consistent styling."
+        },
+        {
+          "path": "frontend/src/components/ContactSection.tsx",
+          "operation": "create",
+          "description": "Create a ContactSection component that wraps the ContactForm with a section heading, introductory text, and optional contact information (if provided in translations). Use the warm color palette and rounded card styling consistent with the rest of the site."
+        },
+        {
+          "path": "frontend/src/i18n/translations.ts",
+          "operation": "modify",
+          "description": "Add translations for contact form labels, placeholders, validation error messages, subject options (general, admissions, support, other), submit button text, success message, and error messages in both English and Hindi."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the ContactSection component below the ClassesSection in the main page layout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Apply warm traditional-modern visual theme with earthy tones and accessible typography",
+      "acceptanceCriteria": [
+        "Color palette uses warm earthy tones (saffron/orange, deep green, cream) consistently throughout",
+        "Heading font is distinct from body font, with both being highly legible",
+        "All sections use rounded cards and consistent spacing",
+        "The design feels welcoming and appropriate for a primary school audience",
+        "The site is responsive and looks good on both desktop and mobile"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define custom CSS variables for the warm color palette: saffron/orange (#FF9933 or similar), deep green (#138808 or similar), and cream/ivory (#FFFEF0 or similar). Import and apply a serif font family for headings (e.g., Merriweather, Lora, or Playfair Display) and a clean sans-serif for body text (e.g., Inter, Open Sans, or Noto Sans). Set global font stacks and apply base styles for a welcoming, accessible design."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend the Tailwind theme to include the custom color palette as named colors (e.g., 'saffron', 'schoolGreen', 'cream'). Define custom font families for 'heading' (serif) and 'body' (sans-serif). Configure default border-radius for cards (rounded-lg or rounded-xl) and spacing scale to ensure consistent, ample whitespace. Ensure responsive design utilities are enabled."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create a Layout component that wraps all page content and applies consistent padding, max-width constraints, and background colors. Use the warm cream color as the page background and ensure all sections have proper spacing. This component ensures a cohesive, welcoming design throughout the site."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap the main page content (Hero, ClassesSection, ContactSection) inside the Layout component to apply consistent spacing and background styling."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Display generated school logo and hero banner images as static assets",
+      "acceptanceCriteria": [
+        "School logo image is displayed in the navigation header",
+        "Hero banner image is displayed in the hero/top section of the page",
+        "Images are loaded from frontend/public/assets/generated"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Create a Header component that displays the school logo image from frontend/public/assets/generated/school-logo.dim_256x256.png on the left side. Include the school name as text next to the logo for accessibility. Render the LanguageToggle component on the right side of the header. Use a sticky or fixed position for easy navigation. Apply the warm color palette and ensure the header is responsive."
+        },
+        {
+          "path": "frontend/src/components/Hero.tsx",
+          "operation": "modify",
+          "description": "Reference and display the hero banner image from frontend/public/assets/generated/hero-banner.dim_1200x400.png as a background image or prominent visual element in the Hero component. Ensure the image is responsive and enhances the welcoming feel of the hero section."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the Header component at the very top of the application, above all other content including the Hero section."
+        }
+      ]
+    }
+  ]
+}

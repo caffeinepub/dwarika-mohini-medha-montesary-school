@@ -1,0 +1,19 @@
+{
+  "frontend/src/index.css": "Global styles with warm earthy OKLCH color palette (saffron, deep green, cream), imports Playfair Display and Noto Sans fonts, and defines utility classes for the school's brand colors.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with custom font families (Playfair Display for headings, Noto Sans for body), saffron/school-green/cream color tokens, card shadows, and fade/scale animations.",
+  "frontend/src/i18n/translations.ts": "Complete bilingual translation file with all UI strings in English and Hindi, including navigation, hero, about, class descriptions (1–5), contact form labels/validation, and footer text.",
+  "frontend/src/contexts/LanguageContext.tsx": "React context provider managing language selection state ('en'/'hi') with sessionStorage persistence and an isSelected flag to control the language modal display.",
+  "frontend/src/hooks/useTranslation.ts": "Custom hook that consumes LanguageContext and returns the typed translations object for the current language.",
+  "frontend/src/hooks/useQueries.ts": "React Query mutation hook for submitting contact inquiries to the backend canister via the submitContactInquiry actor method.",
+  "frontend/src/components/LanguageModal.tsx": "Full-screen overlay modal shown on first page load (when no language is selected) with English and Hindi selection buttons, school logo, and name.",
+  "frontend/src/components/LanguageToggle.tsx": "Compact header button that toggles between English and Hindi, showing the flag and name of the alternate language.",
+  "frontend/src/components/Header.tsx": "Sticky responsive header with school logo, name, desktop/mobile navigation, and the LanguageToggle component.",
+  "frontend/src/components/Hero.tsx": "Hero section displaying the hero banner image with overlay text, school name, location badge, tagline, and CTA buttons in the selected language.",
+  "frontend/src/components/AboutSection.tsx": "About section with school description and two cards for Mission and Vision, rendered in the selected language.",
+  "frontend/src/components/ClassCard.tsx": "Reusable card component for a single class showing class number, age range, description, focus highlight, and subjects with color-coded styling per class.",
+  "frontend/src/components/ClassesSection.tsx": "Section rendering all five ClassCard components in a responsive grid with a section heading and subtitle in the selected language.",
+  "frontend/src/components/ContactForm.tsx": "React Hook Form-based contact form with Full Name, Email, Phone, Subject (Select), and Message fields, validation, backend submission via mutation, and success/error states.",
+  "frontend/src/components/ContactSection.tsx": "Contact section wrapping the ContactForm alongside school contact info cards (address, phone, hours) in a two-column layout.",
+  "frontend/src/components/Footer.tsx": "Responsive footer with school branding, quick navigation links, contact info, copyright year, and caffeine.ai attribution with UTM tracking.",
+  "frontend/src/App.tsx": "Root app component wrapping everything in LanguageProvider, with scroll-based navigation between Home, About, Classes, and Contact sections."
+}

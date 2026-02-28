@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "A multilingual (English/Hindi) school website for Dwarika Mohini Medha Montesary School, Shuklaganj Unnao. Features class listings (1-5), a contact form, and a language selection prompt on page load.",
+  "architectural_notes": [
+    "School name: Dwarika Mohini Medha Montesary School, Location: Shuklaganj Unnao",
+    "Bilingual support: English and Hindi, toggled at page load"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Warm illustrated school crest / logo with lotus flower and open book motif in saffron, green, and cream colors (school-logo.dim_256x256.png)\n- Wide hero banner illustration of a cheerful school building surrounded by trees and children in a warm sunrise setting with saffron and green tones (hero-banner.dim_1200x400.png)",
+  "existing_features": [
+    {
+      "id": "feature-on-initial-page-load-display-a-full-screen-language-selection-modal-or-splash-screen-that-prompts-the-visitor-to-choose-between-english-and-hindi-the-chosen-language-must-persist-for-the-session-and-control-all-visible-text-across-the-entire-site",
+      "title": "On initial page load, display a full-screen language selection modal or splash screen that prompts the visitor to choose between English and Hindi. The chosen language must persist for the session and control all visible text across the entire site.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-a-prominent-school-header-hero-section-with-the-full-school-name-dwarika-mohini-medha-montesary-school-and-location-shuklaganj-unnao-include-a-school-tagline-or-motto-in-both-languages",
+      "title": "Display a prominent school header/hero section with the full school name 'Dwarika Mohini Medha Montesary School' and location 'Shuklaganj, Unnao'. Include a school tagline or motto in both languages.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-classes-section-listing-all-classes-from-class-1-to-class-5-each-class-card-should-display-the-class-name-number-a-brief-description-of-the-curriculum-focus-appropriate-for-that-grade-level-in-both-english-and-hindi-and-any-relevant-highlights-such-as-subjects-taught-or-age-range",
+      "title": "Create a 'Classes' section listing all classes from Class 1 to Class 5. Each class card should display the class name/number, a brief description of the curriculum focus appropriate for that grade level (in both English and Hindi), and any relevant highlights such as subjects taught or age range.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-contact-us-section-with-a-form-that-allows-any-visitor-to-reach-the-school-the-form-must-include-fields-for-full-name-email-address-phone-number-subject-inquiry-type-and-message-on-submission-store-the-contact-inquiry-in-the-backend-and-show-a-success-confirmation-to-the-user",
+      "title": "Implement a Contact Us section with a form that allows any visitor to reach the school. The form must include fields for: Full Name, Email Address, Phone Number, Subject/Inquiry Type, and Message. On submission, store the contact inquiry in the backend and show a success confirmation to the user.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-warm-traditional-yet-modern-visual-theme-suited-for-a-local-primary-school-in-india-use-earthy-tones-such-as-saffron-deep-green-and-cream-ivory-as-the-primary-palette-use-a-clean-readable-typography-pairing-one-serif-style-font-for-headings-and-a-clean-sans-serif-for-body-text-the-layout-should-be-welcoming-and-accessible-with-ample-whitespace-rounded-card-elements-and-subtle-decorative-motifs",
+      "title": "Apply a warm, traditional yet modern visual theme suited for a local primary school in India. Use earthy tones such as saffron, deep green, and cream/ivory as the primary palette. Use a clean, readable typography pairing — one serif-style font for headings and a clean sans-serif for body text. The layout should be welcoming and accessible, with ample whitespace, rounded card elements, and subtle decorative motifs.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-the-generated-school-logo-and-hero-banner-images-as-static-assets-from-frontend-public-assets-generated",
+      "title": "Render the generated school logo and hero banner images as static assets from frontend/public/assets/generated.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Language selection (English/Hindi) prompt on page load",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Display classes 1 through 5 with relevant information",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Contact form for visitors to reach the school",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Dwarika Mohini Medha Montesary School",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
